@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Replication controller
+metadata:
+name:  my-rpc
+labels:
+app: my-rpc
+spec:
+replicas: 3
+selector:
+  app: my-app2
+template:
+  metadata:
+  name:  my-pod2
+  labels:
+  app: my-app2
+  env: devops
+  spec:  
+  container:
+   -name: nginx
+   image: nginx
+  ports:
+    -name: http
+    containerPort: 80
